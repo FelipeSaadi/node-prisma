@@ -46,3 +46,32 @@ export const getUserByEmail = async (email: string) => {
   })
   return user
 }
+
+export const updateUser = async (data: Prisma.UserUpdateInput) => {
+  const updatedUser = await prisma.user.updateMany({
+    where: {
+      email: {
+        endsWith: '@gmail.com'
+      }
+    },
+    data: {
+      status: true
+    }
+  })
+  return updatedUser
+}
+
+export const deleteUser = async (id: number) => {
+  try {
+    const removedUser = await prisma.user.delete({
+      where: {
+        id: id
+      }
+    })
+    return removedUser
+  }
+  catch (error) {
+    console.log(error)
+    return false
+  }
+}

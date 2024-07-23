@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { prisma } from '../libs/prisma'
-import { createUser, createUsers, getAllUsers, getUserByEmail } from '../services/user'
+import { createUser, createUsers, deleteUser, getAllUsers, getUserByEmail, updateUser } from '../services/user'
 
 export const mainRouter = Router()
 
@@ -51,4 +51,19 @@ mainRouter.get('/user', async (req, res) => {
     const result = await getUserByEmail('felipesaadisiegert@gmail.com')
 
     res.status(200).json({ ok: result })
+})
+
+mainRouter.put('/user', async (req, res) => {
+    const result = await updateUser({})
+    res.status(200).json({ ok: result })
+})
+
+mainRouter.delete('/user', async (req, res) => {
+    const result = await deleteUser(3)
+    if (result) {
+        res.json({ ok: result })
+    }
+    else {
+        res.status(500).json({ error: 'Ocorreu um erro ao deletar o usuário' })
+    }
 })
