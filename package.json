@@ -2,7 +2,7 @@
   "name": "node-api-base",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node src/server.ts"
+    "dev": "tsx watch src/server.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.17.0",
@@ -17,6 +17,7 @@
     "@types/node": "^20.11.27",
     "prisma": "^5.17.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.16.2",
     "typescript": "^5.4.2"
   }
 }
